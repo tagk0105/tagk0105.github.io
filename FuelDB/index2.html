@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>web storage test page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript">
+    // Web Storageの実装確認
+    if (typeof sessionStorage === 'undefined') {
+      window.alert("このブラウザはWeb Storage機能が実装されていません");
+    } else {
+      window.alert("このブラウザはWeb Storage機能を実装しています");
+
+      var storage = sessionStorage;
+
+      function setSessionStorage() {
+        var key = document.getElementById("textkey").value;
+        var value = document.getElementById("textdata").value;
+
+        // 値の入力チェック
+        if (  key && value ) {
+          storage.setItem(key, value);
+        }
+
+        key = "";
+        value = "";
+
+        viewStorage();
+      }
+
+      // sessionStorageからのデータの取得と表示
+      function viewStorage() {
+        var list = document.getElementById("list")
+        while(list.firstChild) list.removeChild(list.firstChild);
+
+        // sessionStorageすべての情報の取得
+        for (var i=0; i < storage.length; i++) {
+          var _key = storage.key(i);
+
+          // sessionStorageのキーと値を表示
+          var tr = document.createElement("tr");
+          var td1 = document.createElement("td");
+          var td2 = document.createElement("td");
+          list.appendChild(tr);
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          td1.innerHTML = key;
+          td2.innerHTML = storage.getItem(_key);
+        }
+      }
+
+      // sessionStorageから削除
+      function removeStorage() {
+        var key = document.getElementById("textkey").value;
+        storage.removeItem(key);
+        key = "";
+        viewStorage();
+      }
+
+      // sessionStorageから全て削除
+      function removeallStorage() {
+        storage.clear();
+        viewStorage();
+      }
+    }
+    </script>
+</head>
+<body>
+    <h1>Web Storage test page</h1>
+    <section id="main">
+        保存するkey : <input id="textkey" type="text" />
+        保存する値  : <input id="textdata" type="text" />
+        <button id="button" onclick="setSessionStorage()">保存</button>
+        <button id="button" onclick="removeStorage()">削除</button>
+        <button id="button" onclick="removeallStorage()">すべて削除</button>
+        <table border="1">
+          <tr>
+            <th>KEY</th><th>VALUE</th>
+          </tr>
+          <tbody id="list">
+          </tbody>
+        </table>
+    </section>
+</body>
+</html>
