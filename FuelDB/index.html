@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>top page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+      window.onload = function () {
+        // ローカルストレージ対応判定
+        if (!localStorage) {
+          alert('ローカルストレージ非対応');
+        }
+        // セッションストレージ対応判定
+        if (!sessionStorage) {
+          alert('セッションストレージ非対応');
+        }
+      }
+    </script>
+</head>
+<body>
+    <h1>Web Storage test page</h1>
+</body>
+</html>
