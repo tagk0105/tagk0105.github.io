@@ -3,6 +3,13 @@
 <head>
     <title>top page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            // Great success! All the File APIs are supported.
+        } else {
+            alert('The File APIs are not fully supported in this browser.');
+        }
+    </script>
 </head>
 <body>
     <h1>QR test page</h1>
