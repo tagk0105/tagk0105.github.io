@@ -20,6 +20,8 @@
       </tr>
     </Table>
     <p>this is a QR code file API check ver</p>
+    <input type="file" id="files" name="files[]" multiple />
+    <output id="list"></output>
     <script>
         if (window.File && window.FileReader && window.FileList && window.Blob) {
             // Great success! All the File APIs are supported.
@@ -27,6 +29,19 @@
         } else {
             alert('The File APIs are not fully supported in this browser.');
         }
+        function handleFileSelect(evt) {
+            var files = evt.target.files;   // this FileList Object
+            
+            var output = [];
+            for (var i = 0, f; f = files[i]; i++) {
+                output.push('<li><strong>', escape(f.name), '</strong>(', f.type || 'n/a', ') - ',
+                            f.size,
+                            f.lastModifiedDate.toLocaleDateString(), '</li>');
+            }
+            document.getElementById('list').innerHTML = '<ul>' +
+                output.join('') + '</ul>';
+        }
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
     </script>
 </body>
 </html>
