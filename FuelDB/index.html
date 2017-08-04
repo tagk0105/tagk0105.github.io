@@ -13,6 +13,19 @@
         if (!sessionStorage) {
           alert('セッションストレージ非対応');
         }
+        methodSave();
+        methodRead();
+      }
+      // save
+      function methodSave() {
+        var key = 'taguchi';
+        var val = 'katsumi';
+        localStorage.setItem(key, val);
+      }
+      // read
+      function methodRead() {
+        var name = localStorage.getItem('taguchi');
+        alert(name);
       }
     </script>
 </head>
