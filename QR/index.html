@@ -3,14 +3,6 @@
 <head>
     <title>top page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script>
-        if (window.File && window.FileReader && window.FileList && window.Blob) {
-            // Great success! All the File APIs are supported.
-            alert('File API is ready.');
-        } else {
-            alert('The File APIs are not fully supported in this browser.');
-        }
-    </script>
 </head>
 <body>
     <h1>QR test page</h1>
@@ -27,6 +19,14 @@
         </td>
       </tr>
     </Table>
-    <p>this is a QR code</p>
+    <p>this is a QR code file API check ver</p>
+    <script>
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            // Great success! All the File APIs are supported.
+            alert('File API is ready.');
+        } else {
+            alert('The File APIs are not fully supported in this browser.');
+        }
+    </script>
 </body>
 </html>
