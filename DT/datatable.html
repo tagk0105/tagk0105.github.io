@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.css"/>
+      <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.js"></script>
+  </head>
+  <body>
+    <table id="books_table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Page</th>
+          <th>Publication</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </body>
+  <script>
+    $(document).ready(function() {
+      $('#books_table').DataTable({
+        "ajax": {
+          url: "data.json",
+        }
+      });
+    });
+  </script>
+</html>
